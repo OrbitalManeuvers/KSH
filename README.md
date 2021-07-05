@@ -1,4 +1,4 @@
 # KSH
 Kerbal Science History
 
-![Main screen](https://i.imgur.com/QpDYqbR.png)
+<img src="https://i.imgur.com/QpDYqbR.png" width="500" />
