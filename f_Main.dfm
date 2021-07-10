@@ -185,12 +185,14 @@ object MainForm: TMainForm
   end
   object dlgFileOpen: TFileOpenDialog
     FavoriteLinks = <>
+    FileName = 'persistent.sfs'
+    FileNameLabel = 'KSP Save file:'
     FileTypes = <
       item
         DisplayName = 'Save file (*.sfs)'
         FileMask = '*.sfs'
       end>
-    Options = [fdoNoChangeDir, fdoPathMustExist, fdoFileMustExist]
+    Options = [fdoNoChangeDir, fdoFileMustExist, fdoNoTestFileCreate]
     Left = 728
     Top = 8
   end

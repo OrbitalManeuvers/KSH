@@ -102,7 +102,11 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   UpdateControls;
-  Self.Caption := Self.Caption + ' - ' + VersionInfo.FileVersion;
+  if VersionInfo.VersionInfoAvailable then
+    Self.Caption := Format('%s - %d.%d.%d.%d', [Self.Caption,
+      VersionInfo.MajorVersion, VersionInfo.MinorVersion, VersionInfo.Release,
+      Versioninfo.Build]);
+//    Self.Caption + ' - ' + VersionInfo.FileVersion;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -200,7 +204,7 @@ end;
 
 procedure TMainForm.BrowseActionExecute(Sender: TObject);
 begin
-  if dlgFileOpen.Execute then
+  if dlgFileOpen.Execute(Self.Handle) then
   begin
     CloseAll;
 

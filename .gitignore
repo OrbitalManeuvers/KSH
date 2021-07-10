@@ -4,3 +4,6 @@
 *.identcache
 *.otares
 KerbalScienceHistory_Icon.ico
+*.~*
+Releases/*.zip
+ver_info.res

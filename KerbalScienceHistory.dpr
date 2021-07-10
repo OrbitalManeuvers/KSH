@@ -1,5 +1,7 @@
 program KerbalScienceHistory;
 
+{$R 'ver_info.res' 'ver_info.rc'}
+
 uses
   Vcl.Forms,
   f_Main in 'f_Main.pas' {MainForm},
