@@ -1,6 +1,7 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
+  ActiveControl = ListView
   Caption = 'Kerbal Science History'
   ClientHeight = 547
   ClientWidth = 781
@@ -24,16 +25,15 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 885
     DesignSize = (
       781
       107)
     object Label1: TLabel
       Left = 8
       Top = 17
-      Width = 76
+      Width = 53
       Height = 17
-      Caption = 'Game folder:'
+      Caption = 'Save File:'
     end
     object Bevel1: TBevel
       Left = 0
@@ -74,9 +74,9 @@ object MainForm: TMainForm
     end
     object btnBrowse: TPngSpeedButton
       Left = 489
-      Top = 14
+      Top = 13
       Width = 88
-      Height = 25
+      Height = 27
       Action = BrowseAction
     end
     object Label3: TLabel
@@ -86,14 +86,15 @@ object MainForm: TMainForm
       Height = 17
       Caption = 'Focus on:'
     end
-    object edtGameFolder: TEdit
+    object edtSaveFileName: TEdit
       Left = 106
       Top = 14
       Width = 377
       Height = 25
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = False
       TabOrder = 0
-      Text = '(none)'
     end
     object edtGameTitle: TEdit
       Left = 106
@@ -102,7 +103,6 @@ object MainForm: TMainForm
       Height = 25
       ReadOnly = True
       TabOrder = 1
-      Text = '(none)'
     end
     object cmbFocus: TComboBox
       Left = 449
@@ -182,15 +182,15 @@ object MainForm: TMainForm
     ViewStyle = vsReport
     OnAdvancedCustomDrawSubItem = ListViewAdvancedCustomDrawSubItem
     OnCompare = ListViewCompareItem
-    ExplicitLeft = 176
-    ExplicitTop = 184
-    ExplicitWidth = 250
-    ExplicitHeight = 150
   end
   object dlgFileOpen: TFileOpenDialog
     FavoriteLinks = <>
-    FileTypes = <>
-    Options = [fdoPickFolders, fdoPathMustExist]
+    FileTypes = <
+      item
+        DisplayName = 'Save file (*.sfs)'
+        FileMask = '*.sfs'
+      end>
+    Options = [fdoNoChangeDir, fdoPathMustExist, fdoFileMustExist]
     Left = 728
     Top = 8
   end
@@ -324,6 +324,7 @@ object MainForm: TMainForm
     object BrowseAction: TAction
       Caption = 'Browse...'
       ImageIndex = 5
+      ShortCut = 16463
       OnExecute = BrowseActionExecute
     end
   end

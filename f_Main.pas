@@ -13,7 +13,7 @@ type
   TMainForm = class(TForm)
     pnlHeader: TPanel;
     Label1: TLabel;
-    edtGameFolder: TEdit;
+    edtSaveFileName: TEdit;
     Bevel1: TBevel;
     dlgFileOpen: TFileOpenDialog;
     Images: TPngImageList;
@@ -45,7 +45,7 @@ type
     procedure BrowseActionExecute(Sender: TObject);
     procedure cmbFocusChange(Sender: TObject);
   private
-    fGamePath: string;
+    fSaveFileName: string;
     fSaveFile: TCFGReader;
     fScience: TCFGScienceParser;
     procedure UpdateControls;
@@ -202,8 +202,9 @@ procedure TMainForm.BrowseActionExecute(Sender: TObject);
 begin
   if dlgFileOpen.Execute then
   begin
-    fGamePath := dlgFileOpen.FileName;
     CloseAll;
+
+    fSaveFileName := dlgFileOpen.FileName;
     LoadSaveFile;
   end;
 end;
@@ -242,13 +243,10 @@ begin
 end;
 
 procedure TMainForm.LoadSaveFile;
-var
-  FileName: string;
 begin
-  FileName := TPath.Combine(fGamePath, 'persistent.sfs');
-  if TFile.Exists(FileName) then
+  if TFile.Exists(fSaveFileName) then
   begin
-    fSaveFile := TCFGReader.Create(FileName);
+    fSaveFile := TCFGReader.Create(fSaveFileName);
     if Assigned(fSaveFile) then
     begin
       fScience := TCFGScienceParser.Create(fSaveFile.Root);
@@ -310,7 +308,7 @@ begin
   if Assigned(fSaveFile) and Assigned(fScience) then
   begin
     edtGameTitle.Text := fScience.GameTitle;
-    edtGameFolder.Text := fGamePath;
+    edtSaveFileName.Text := fSaveFileName;
     RefreshAction.Enabled := True;
     ExpandAllAction.Enabled := True;
     CollapseAllAction.Enabled := True;
@@ -318,8 +316,8 @@ begin
   end
   else
   begin
-    edtGameTitle.Text := '(None)';
-    edtGameFolder.Text := '';
+    edtGameTitle.Text := '';
+    edtSaveFileName.Text := 'No file loaded. Click Browse button =>';
     RefreshAction.Enabled := False;
     ExpandAllAction.Enabled := False;
     CollapseAllAction.Enabled := False;

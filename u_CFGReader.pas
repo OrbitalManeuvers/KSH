@@ -162,7 +162,7 @@ procedure TCFGReader.LoadFile;
 var
   I: Integer;
 begin
-  fLines.LoadFromFile(fFileName);
+  fLines.LoadFromFile(fFileName, TEncoding.UTF8);
   // remove indentation
   for I := 0 to fLines.Count - 1 do
     fLines[I] := Trim(fLines[I]);
