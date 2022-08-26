@@ -298,11 +298,6 @@ object MainForm: TMainForm
       end>
     Left = 712
     Top = 64
-    Bitmap = {}
-  end
-  object VersionInfo: TRzVersionInfo
-    Left = 704
-    Top = 32
   end
   object MainActions: TActionList
     Images = Images
@@ -311,21 +306,25 @@ object MainForm: TMainForm
     object RefreshAction: TAction
       Caption = 'Refresh'
       ImageIndex = 2
+      ImageName = 'Refresh_16px'
       OnExecute = RefreshActionExecute
     end
     object ExpandAllAction: TAction
       Caption = 'Expand All'
       ImageIndex = 3
+      ImageName = 'Expand Arrow_16px'
       OnExecute = ExpandAllActionExecute
     end
     object CollapseAllAction: TAction
       Caption = 'Collapse All'
       ImageIndex = 4
+      ImageName = 'Collapse Arrow_16px'
       OnExecute = CollapseAllActionExecute
     end
     object BrowseAction: TAction
       Caption = 'Browse...'
       ImageIndex = 5
+      ImageName = 'Opened Folder_16px'
       ShortCut = 16463
       OnExecute = BrowseActionExecute
     end
